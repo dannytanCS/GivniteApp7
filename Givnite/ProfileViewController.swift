@@ -105,16 +105,27 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
     
     override func viewDidLoad() {
 
+        
+        connectButton.hidden = true
+        
         if otherUser == false && marketVC == false {
             userID = self.user?.uid
             storesInfoFromFB()
         }
+        
+
     
         if otherUser == true || marketVC == true {
             changeBioButton.hidden = true
             addButton.hidden = true
             connectionButton.hidden = true
-            connectButton.hidden = false
+            
+            
+            if (user!.uid != userID!) {
+                print(123123)
+                connectButton.hidden = false
+            }
+    
         }
 
         if marketVC == true {
@@ -126,6 +137,13 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
         
         super.viewDidLoad()
       
+        
+        
+        print("\(user!.uid)")
+        
+        print(userID!)
+        print(otherUser)
+
         
       
        
@@ -481,17 +499,43 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
             if let major = snapshot.value!["major"] as? String {
                 self.majorLabel.text = major
             }
-            
-            // 1 means requested, one is connected
-            // 2 means givnited, both is connected
-            
-            if let connect = snapshot.value!["connections"] as? NSDictionary {
-                print(connect)
-                print(self.user?.uid)
-                if let value = connect[self.user!.uid] as? Int {
-                    print(value)
+             
+
+            if let bioDescription = snapshot.value!["bio"] as? String {
+
+                if bioDescription == "" || bioDescription == self.placeHolderText{
+                    self.bioTextView.text = self.placeHolderText
+                    self.bioTextView.textColor = UIColor.lightGrayColor()
+                }
+                else {
+                    
+                    self.bioTextView.text = bioDescription
+                    self.bioTextView.textColor = UIColor.blackColor()
+                }
+            }
+            else {
+                self.bioTextView.text = self.placeHolderText
+                self.bioTextView.textColor = UIColor.lightGrayColor()
+                
+            }
+            })
+        
+        
+        if (userID != user!.uid) {
+        
+            dataRef.child("user").child(userID!).child("connections").child(self.user!.uid).observeSingleEventOfType(.Value, withBlock: { (snapshot)
+                in
+                
+                
+                if let value = snapshot.value! as? Int {
+                  
+                    
+                    if value == 0 {
+                        self.connectButton.setTitle("Connect", forState: .Normal)
+                        self.currentStateConnection = "0"
+                    }
                     if value == 1 {
-                        self.connectButton.setTitle("Requested", forState: .Normal)
+                        self.connectButton.setTitle("Request", forState: .Normal)
                         self.currentStateConnection = "1"
                     }
                     
@@ -502,51 +546,17 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
                     
                     
                 }
-                
-                
+                    
+                    
                 else {
                     self.connectButton.setTitle("Add Friend", forState: .Normal)
                     
-                    self.currentStateConnection = "0"
-                    
+                    self.currentStateConnection = "3"
                 }
+                
+            })
+        }
 
-                
-            }
-            
-            else {
-                self.connectButton.setTitle("Add Friend", forState: .Normal)
-                
-                
-                self.currentStateConnection = "0"
-                
-            }
-            print(self.otherUser)
-            
-            if self.otherUser == true  {
-          
-                self.connectButton.hidden = false
-            
-            }
-            
-            if let bioDescription = snapshot.value!["bio"] as? String {
-                print(self.placeHolderText)
-                if bioDescription == "" || bioDescription == self.placeHolderText{
-                    self.bioTextView.text = self.placeHolderText
-                    self.bioTextView.textColor = UIColor.lightGrayColor()
-                }
-                else {
-                
-                    self.bioTextView.text = bioDescription
-                    self.bioTextView.textColor = UIColor.blackColor()
-                }
-            }
-            else {
-                self.bioTextView.text = self.placeHolderText
-                self.bioTextView.textColor = UIColor.lightGrayColor()
-
-            }
-        })
     }
     
     
@@ -617,35 +627,48 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
         
         //default
         
-        if currentStateConnection! == "0" {
+        if currentStateConnection! == "3" {
         
             dataRef.child("user").child(user!.uid).child("connections").child(userID!).setValue(0)
         
             dataRef.child("user").child(userID!).child("connections").child(user!.uid).setValue(1)
             
             self.connectButton.setTitle("Requested", forState: .Normal)
-            
-            self.currentStateConnection = "1"
-             print(currentStateConnection)
+            self.currentStateConnection = "2"
         }
         
-            //requested or givnited
+            //connected
         
         
-        else if currentStateConnection! == "1" || currentStateConnection! == "2" {
+        else if currentStateConnection! == "0" {
             
-            dataRef.child("user").child(user!.uid).child("connections").child(userID!).removeValue()
+            dataRef.child("user").child(user!.uid).child("connections").child(userID!).setValue(2)
             
-            dataRef.child("user").child(userID!).child("connections").child(user!.uid).removeValue()
-        
-            self.connectButton.setTitle("Add Friend", forState: .Normal)
+            dataRef.child("user").child(userID!).child("connections").child(user!.uid).setValue(2)
             
-            self.currentStateConnection = "0"
+            self.connectButton.setTitle("Givnited", forState: .Normal)
+            
+            self.currentStateConnection = "2"
 
             
-            print(currentStateConnection)
+          
         }
         
+            //says givnited or requested
+            
+        else if currentStateConnection! == "2" || currentStateConnection! == "1" {
+                
+                dataRef.child("user").child(user!.uid).child("connections").child(userID!).removeValue()
+                
+                dataRef.child("user").child(userID!).child("connections").child(user!.uid).removeValue()
+                
+                self.connectButton.setTitle("Add Friend", forState: .Normal)
+                
+                self.currentStateConnection = "3"
+            
+            
+        }
+
     }
     
 

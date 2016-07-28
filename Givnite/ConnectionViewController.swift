@@ -31,8 +31,6 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         
         
         
-        print(123123)
-        
         
         super.viewDidLoad()
         
@@ -55,10 +53,7 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
                 self.userIDArray = allKeys!
                 self.connectedArray = allValues!
 
-                
-                print(self.userIDArray)
-                
-                print(self.connectedArray)
+
     
              
             }
@@ -107,7 +102,7 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
                     
 
                     self.connections.append(someUser)
-                    print(self.connections)
+               
                 }
             }
             
@@ -135,8 +130,7 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("tableCell")! as! ConnectionTableViewCell
     
         
-        print(connections)
-        print(rowCount)
+  
 
         if let aUser = self.connections[indexPath.row] as? User {
       
@@ -178,12 +172,7 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         cell.connectButton.addTarget(self, action: "buttonClick:", forControlEvents: .TouchUpInside)
         
         
-        
-       
-        print(connectedArray)
-        print(userIDArray)
-        print(rowCount)
-        print(indexPath.row)
+     
         
         if let value = self.connectedArray[indexPath.row] as? Int {
         
@@ -198,6 +187,8 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
             if (value == 2) {
                 cell.connectButton.setTitle("Givnited", forState: .Normal)
             }
+            
+            print(value)
         
             connectionValue = value
         }
@@ -220,6 +211,7 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         
         let otherUserID = userIDArray[clickedButtonIndexPath.row]
         
+        print(connectionValue)
         
         //connect
         
@@ -237,18 +229,21 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         
         
         //requested or givnited
-        if connectionValue == 0 || connectionValue == 2 {
+        else if connectionValue == 0 || connectionValue == 2 {
             
             
             databaseRef.child("user").child(user!.uid).child("connections").child(otherUserID).removeValue()
         
         databaseRef.child("user").child(otherUserID).child("connections").child(user!.uid).removeValue()
-        }
         
-    
-        connections.removeAtIndex(clickedButtonIndexPath.row)
-        rowCount -= 1
-        tableView.reloadData()
+        
+            connections.removeAtIndex(clickedButtonIndexPath.row)
+            
+            rowCount -= 1
+            tableView.reloadData()
+            
+            
+        }
 
         
         

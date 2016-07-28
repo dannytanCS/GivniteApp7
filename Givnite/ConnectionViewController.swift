@@ -21,7 +21,6 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
     var connectedArray = [Int]()
     
     var connections = [User]()
-    var connectionValue: Int?
     
     var rowCount = 0
 
@@ -178,19 +177,22 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         
             if (value == 0) {
                 cell.connectButton.setTitle("Requested", forState: .Normal)
+              
+
             }
         
             if (value == 1) {
-                cell.connectButton.setTitle("Connect", forState: .Normal)
+                cell.connectButton.setTitle("Confirm", forState: .Normal)
+               
+
             }
         
             if (value == 2) {
                 cell.connectButton.setTitle("Givnited", forState: .Normal)
+              
+
             }
-            
-            print(value)
         
-            connectionValue = value
         }
         
         return cell
@@ -211,7 +213,7 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         
         let otherUserID = userIDArray[clickedButtonIndexPath.row]
         
-        print(connectionValue)
+        let connectionValue = connectedArray[clickedButtonIndexPath.row]
         
         //connect
         
@@ -234,7 +236,7 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
             
             databaseRef.child("user").child(user!.uid).child("connections").child(otherUserID).removeValue()
         
-        databaseRef.child("user").child(otherUserID).child("connections").child(user!.uid).removeValue()
+            databaseRef.child("user").child(otherUserID).child("connections").child(user!.uid).removeValue()
         
         
             connections.removeAtIndex(clickedButtonIndexPath.row)

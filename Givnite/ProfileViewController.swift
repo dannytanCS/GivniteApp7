@@ -499,7 +499,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
             if let major = snapshot.value!["major"] as? String {
                 self.majorLabel.text = major
             }
-             
+            
 
             if let bioDescription = snapshot.value!["bio"] as? String {
 
@@ -531,7 +531,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
                   
                     
                     if value == 0 {
-                        self.connectButton.setTitle("Connect", forState: .Normal)
+                        self.connectButton.setTitle("Confirm", forState: .Normal)
                         self.currentStateConnection = "0"
                     }
                     if value == 1 {

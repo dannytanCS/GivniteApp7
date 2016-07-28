@@ -935,6 +935,13 @@
                                     <outlet property="delegate" destination="Uh7-ly-fif" id="2Jc-cE-7P6"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjU-OC-68u">
+                                <rect key="frame" x="26" y="10" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="WKj-cM-742" kind="modal" id="mEw-wi-rl8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2063,10 +2070,10 @@
         <image name="photo-camera (1)" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4Fk-YX-ieg"/>
-        <segue reference="Nm1-oM-csR"/>
-        <segue reference="4FE-Dr-Dr8"/>
-        <segue reference="yDE-RF-xni"/>
         <segue reference="Mgg-ae-R6I"/>
+        <segue reference="yDE-RF-xni"/>
+        <segue reference="mEw-wi-rl8"/>
+        <segue reference="4FE-Dr-Dr8"/>
+        <segue reference="Nm1-oM-csR"/>
     </inferredMetricsTieBreakers>
 </document>

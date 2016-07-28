@@ -22,6 +22,8 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
     
     var connections = [User]()
     var connectionValue: Int?
+    
+    var rowCount = 0
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,6 +31,7 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         
         
         super.viewDidLoad()
+        
 
      
         let databaseRef = FIRDatabase.database().referenceFromURL("https://givniteapp.firebaseio.com/")
@@ -42,19 +45,16 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
             
             if let connections = snapshot.value! as? NSDictionary {
                 
-                
-                
                 let allKeys = connections.allKeys as? [String]
                 let allValues = connections.allValues as? [Int]
                 
                 self.userIDArray = allKeys!
                 self.connectedArray = allValues!
-                
-                self.getsTheConnections()
-                
-                
+
+    
+             
             }
-            
+            self.getsTheConnections()
             
         })
 
@@ -85,7 +85,6 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
                     var someUser = User()
                     
                     if let name = userInfo["name"] as? String {
-                        print(name)
                         someUser.name = name
                     }
                     
@@ -98,8 +97,9 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
                         someUser.picture = imageUrl
                     }
                     
-                    
+
                     self.connections.append(someUser)
+                    self.rowCount = self.connections.count
                 }
             }
 
@@ -115,7 +115,7 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
     
   
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return connections.count
+        return rowCount
     }
     
     
@@ -124,7 +124,7 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("tableCell")! as! ConnectionTableViewCell
     
-        
+
         if let aUser = self.connections[indexPath.row] as? User {
       
             cell.userName.text = aUser.name
@@ -165,27 +165,24 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         cell.connectButton.tag = indexPath.row
         cell.connectButton.addTarget(self, action: "buttonClick:", forControlEvents: .TouchUpInside)
         
-        if connectedArray.count > 1 {
         
-            if let value = self.connectedArray[indexPath.row] as? Int {
-            
-                if (value == 0) {
-                    cell.connectButton.setTitle("Requested", forState: .Normal)
-                }
-            
-                if (value == 1) {
-                    cell.connectButton.setTitle("Connect", forState: .Normal)
-                }
-            
-                if (value == 2) {
-                    cell.connectButton.setTitle("Givnited", forState: .Normal)
-                }
-            
-                connectionValue = value
+       
+        if let value = self.connectedArray[indexPath.row] as? Int {
+        
+            if (value == 0) {
+                cell.connectButton.setTitle("Requested", forState: .Normal)
             }
+        
+            if (value == 1) {
+                cell.connectButton.setTitle("Connect", forState: .Normal)
+            }
+        
+            if (value == 2) {
+                cell.connectButton.setTitle("Givnited", forState: .Normal)
+            }
+        
+            connectionValue = value
         }
-        
-        
         
         return cell
 
@@ -222,6 +219,10 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
             databaseRef.child("user").child(user!.uid).child("connections").child(otherUserID).removeValue()
             databaseRef.child("user").child(otherUserID).child("connections").child(user!.uid).removeValue()
             
+            
+            userIDArray.removeAtIndex(sender.tag)
+            connectedArray.removeAtIndex(sender.tag)
+            rowCount -= 1
             self.tableView.reloadData()
             
             

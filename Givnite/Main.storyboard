@@ -490,7 +490,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ucN-rd-OBx" id="Tmn-7b-efJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihz-6h-pnn">
@@ -651,7 +651,7 @@
                                             <constraint firstAttribute="height" constant="103" id="NDP-vj-r9Z"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVG-EK-8WI" userLabel="Connect" customClass="DesignableButton" customModule="Givnite">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVG-EK-8WI" userLabel="Connect" customClass="DesignableButton" customModule="Givnite">
                                         <rect key="frame" x="156" y="84" width="126" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -672,7 +672,7 @@
                                                 <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -738,18 +738,12 @@
                                                 <state key="normal" title="156">
                                                     <color key="titleColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="showConnections:" destination="WKj-cM-742" eventType="touchUpInside" id="3iz-Wv-iii"/>
-                                                </connections>
                                             </button>
                                             <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKA-eO-W1o">
                                                 <rect key="frame" x="250" y="0.0" width="125" height="30"/>
                                                 <state key="normal" title="156">
                                                     <color key="titleColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="showConnections:" destination="WKj-cM-742" eventType="touchUpInside" id="BFS-ZC-1eC"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -761,19 +755,19 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Givnitee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qs-LZ-d0U">
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAa-bS-BK0">
                                         <rect key="frame" x="125" y="0.0" width="125" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5a-Eq-FUj">
                                         <rect key="frame" x="250" y="0.0" width="125" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -862,7 +856,7 @@
                         <outlet property="changeBioButton" destination="eJ3-K9-LLP" id="1p6-Da-tXH"/>
                         <outlet property="collectionView" destination="ZAK-qB-4E7" id="ABK-Kz-mjY"/>
                         <outlet property="connectButton" destination="kVG-EK-8WI" id="Eci-Ir-7N9"/>
-                        <outlet property="connectionButton" destination="LM2-gJ-16L" id="Paz-QQ-6I2"/>
+                        <outlet property="connectionButton" destination="LM2-gJ-16L" id="VnC-iH-bKo"/>
                         <outlet property="doneButton" destination="0Uo-qj-7h4" id="ROT-Wc-ZTH"/>
                         <outlet property="graduationYearLabel" destination="zoN-cL-aij" id="D5R-5D-t5t"/>
                         <outlet property="majorLabel" destination="F2W-Ue-4s4" id="IhF-12-eza"/>
@@ -874,17 +868,16 @@
                         <segue destination="sEY-U2-bM3" kind="custom" identifier="toMarketplace" customClass="LeftToRight" customModule="Givnite" customModuleProvider="target" id="4FE-Dr-Dr8"/>
                         <segue destination="vZO-F9-SpX" kind="modal" identifier="showCamera" id="z7u-F7-K2c"/>
                         <segue destination="Tnf-I5-fWN" kind="custom" identifier="backToItem" customClass="LeftToRight" customModule="Givnite" customModuleProvider="target" id="Nm1-oM-csR"/>
-                        <segue destination="Vcm-bO-Zl3" kind="modal" identifier="showConnections" id="aD7-vo-RAf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0e-Ez-k10" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2001.5" y="1404.5"/>
+            <point key="canvasLocation" x="2032.5" y="1386.5"/>
         </scene>
         <!--Connection View Controller-->
         <scene sceneID="47s-Vx-tzE">
             <objects>
-                <viewController id="Uh7-ly-fif" customClass="ConnectionViewController" customModule="Givnite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="connection" id="Uh7-ly-fif" customClass="ConnectionViewController" customModule="Givnite" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LTZ-H4-MAy"/>
                         <viewControllerLayoutGuide type="bottom" id="7Oo-nq-uih"/>
@@ -905,50 +898,54 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s0g-vA-d7I" id="rq0-qx-QHm">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="110.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e3P-w7-81f">
                                                     <rect key="frame" x="8" y="8" width="80" height="80"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGg-ue-vbO">
-                                                    <rect key="frame" x="96" y="8" width="42" height="21"/>
+                                                    <rect key="frame" x="96" y="8" width="147" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmP-0G-etF">
-                                                    <rect key="frame" x="96" y="50" width="42" height="21"/>
+                                                    <rect key="frame" x="96" y="50" width="157" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5HT-yG-cVg">
-                                                    <rect key="frame" x="266" y="33" width="46" height="30"/>
+                                                    <rect key="frame" x="185" y="33" width="127" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="connectButton" destination="5HT-yG-cVg" id="ujs-n9-cHS"/>
-                                            <outlet property="userImage" destination="e3P-w7-81f" id="r4W-lJ-VNg"/>
+                                            <outlet property="userImage" destination="e3P-w7-81f" id="t7T-iM-BSF"/>
                                             <outlet property="userName" destination="YGg-ue-vbO" id="tK0-Xh-vWU"/>
                                             <outlet property="userSchool" destination="XmP-0G-etF" id="aTl-ao-hyi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Uh7-ly-fif" id="taj-Cr-XTS"/>
+                                    <outlet property="delegate" destination="Uh7-ly-fif" id="2Jc-cE-7P6"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Vds-tk-K9E"/>
                     <connections>
-                        <outlet property="tableView" destination="BjS-X7-O8v" id="5jo-8M-sqZ"/>
+                        <outlet property="tableView" destination="BjS-X7-O8v" id="yK4-CB-cxi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M15-XZ-Zlo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2896" y="401"/>
+            <point key="canvasLocation" x="2562" y="525"/>
         </scene>
         <!--Camera-->
         <scene sceneID="pFe-e8-m0u">
@@ -2036,24 +2033,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQA-46-M6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1924" y="-391"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Yyl-Zi-Boh">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vcm-bO-Zl3" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nBS-hP-GdQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Uh7-ly-fif" kind="relationship" relationship="rootViewController" id="gaQ-DI-AzP"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LQh-fG-5r0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2444" y="401"/>
         </scene>
     </scenes>
     <resources>

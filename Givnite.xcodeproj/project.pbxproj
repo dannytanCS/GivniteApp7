@@ -25,11 +25,11 @@
 		7EA150341D31AAC200B5E639 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA150331D31AAC200B5E639 /* DescriptionViewController.swift */; };
 		7EA8501A1D2ED94E00E05190 /* SchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA850191D2ED94E00E05190 /* SchoolViewController.swift */; };
 		7EBCD2D31D4942E8004203FE /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBCD2D21D4942E8004203FE /* ConnectionViewController.swift */; };
-		7EBCD2D51D495102004203FE /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBCD2D41D495102004203FE /* ConnectionTableViewCell.swift */; };
 		7EBCD2D71D496C23004203FE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBCD2D61D496C23004203FE /* User.swift */; };
 		7ECAFC201D4189C600BDFC80 /* NSCache+Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECAFC1F1D4189C600BDFC80 /* NSCache+Singleton.swift */; };
 		7ED2A7421D3BE42600478551 /* MarketItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED2A7411D3BE42600478551 /* MarketItemViewController.swift */; };
 		7EE6232C1D2EC1A900B6DA60 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7EE6232B1D2EC1A900B6DA60 /* GoogleService-Info.plist */; };
+		7EF8D0451D4A6DDB006FDF05 /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D0441D4A6DDB006FDF05 /* ConnectionTableViewCell.swift */; };
 		7EF976CC1D304178000E22F8 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF976CB1D304178000E22F8 /* Camera.swift */; };
 		7EFF08E31D3EB964000C0E4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFF08E21D3EB964000C0E4D /* ViewController.swift */; };
 		B195C7340EF3FCD7EDFB24EC /* Pods_Givnite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55E1D8C7000DBD506DD9075 /* Pods_Givnite.framework */; };
@@ -91,11 +91,11 @@
 		7EA150331D31AAC200B5E639 /* DescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		7EA850191D2ED94E00E05190 /* SchoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolViewController.swift; sourceTree = "<group>"; };
 		7EBCD2D21D4942E8004203FE /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
-		7EBCD2D41D495102004203FE /* ConnectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCell.swift; sourceTree = "<group>"; };
 		7EBCD2D61D496C23004203FE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7ECAFC1F1D4189C600BDFC80 /* NSCache+Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCache+Singleton.swift"; sourceTree = "<group>"; };
 		7ED2A7411D3BE42600478551 /* MarketItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketItemViewController.swift; sourceTree = "<group>"; };
 		7EE6232B1D2EC1A900B6DA60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7EF8D0441D4A6DDB006FDF05 /* ConnectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCell.swift; sourceTree = "<group>"; };
 		7EF976CB1D304178000E22F8 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		7EFF08E21D3EB964000C0E4D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A55E1D8C7000DBD506DD9075 /* Pods_Givnite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Givnite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,8 +226,8 @@
 				7E64DFAF1D3AA4920087A700 /* MarketCollectionViewCell.swift */,
 				7ED2A7411D3BE42600478551 /* MarketItemViewController.swift */,
 				7EBCD2D21D4942E8004203FE /* ConnectionViewController.swift */,
-				7EBCD2D41D495102004203FE /* ConnectionTableViewCell.swift */,
 				7EBCD2D61D496C23004203FE /* User.swift */,
+				7EF8D0441D4A6DDB006FDF05 /* ConnectionTableViewCell.swift */,
 				7EA0A9211D300A0100CD895E /* Main.storyboard */,
 				C44D0E371D277FDC00C8EC92 /* Assets.xcassets */,
 				C44D0E391D277FDC00C8EC92 /* LaunchScreen.storyboard */,
@@ -417,7 +417,6 @@
 				C48259621D402F6D00E3497F /* DesignableButton.swift in Sources */,
 				7E42DF791D3A8B250074E8BC /* MarketplaceViewController.swift in Sources */,
 				5A43FFC41D415A0D005A0E18 /* ChatsTableViewController.swift in Sources */,
-				7EBCD2D51D495102004203FE /* ConnectionTableViewCell.swift in Sources */,
 				7EBCD2D31D4942E8004203FE /* ConnectionViewController.swift in Sources */,
 				C48259691D402F6D00E3497F /* ImageLoader.swift in Sources */,
 				5A43FFC01D4159B6005A0E18 /* RightToLeft.swift in Sources */,
@@ -426,6 +425,7 @@
 				C482595E1D402F6D00E3497F /* AsyncButton.swift in Sources */,
 				C482597A1D402F6D00E3497F /* UnwindSegue.swift in Sources */,
 				7E64DFB01D3AA4920087A700 /* MarketCollectionViewCell.swift in Sources */,
+				7EF8D0451D4A6DDB006FDF05 /* ConnectionTableViewCell.swift in Sources */,
 				7EA150341D31AAC200B5E639 /* DescriptionViewController.swift in Sources */,
 				C48259641D402F6D00E3497F /* DesignableLabel.swift in Sources */,
 				C48259791D402F6D00E3497F /* TransitionZoom.swift in Sources */,

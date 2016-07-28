@@ -41,7 +41,11 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
             imageNameArray = array
         }
         
-        refreshControlFunc()
+        
+        if searchBarText.text == "" {
+            print(123123)
+            refreshControlFunc()
+        }
         
         loadImages()
         
@@ -110,6 +114,8 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         imageNameArray.removeAll()
            // Updating your data here...
         
+        
+            searchBarText.text = ""
             loadImages()
         
         // -- DO SOMETHING AWESOME (... or just wait 3 seconds) --
@@ -372,7 +378,6 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                                 NSCache.sharedInstance.setObject(imageToCache!, forKey: imageName)
                                 dispatch_async(dispatch_get_main_queue(),{
                                     cell.itemImageView.image = imageToCache
-                                    print(self.imageArray)
                                     if self.imageArray.count > indexPath.row {
                                         self.imageArray[indexPath.row] = imageToCache!
                                     }

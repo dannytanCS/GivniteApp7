@@ -14,7 +14,7 @@ import FirebaseAuth
 
 
 
-class LoginViewController: UIViewController {
+class LoginViewContrller: UIViewController {
 
 
     @IBOutlet weak var facebookLoginButton: ZFRippleButton!

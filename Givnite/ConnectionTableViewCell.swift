@@ -2,6 +2,14 @@
 //  ConnectionTableViewCell.swift
 //  Givnite
 //
+//  Created by Danny Tan on 7/28/16.
+//  Copyright © 2016 Givnite. All rights reserved.
+//
+
+//
+//  ConnectionTableViewCell.swift
+//  Givnite
+//
 //  Created by Danny Tan on 7/27/16.
 //  Copyright © 2016 Givnite. All rights reserved.
 //
@@ -20,16 +28,17 @@ class ConnectionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var connectButton: UIButton!
     
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
+

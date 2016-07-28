@@ -16,35 +16,33 @@ import FirebaseDatabase
 class ConnectionViewController: UIViewController,UITableViewDelegate {
     
     
-    let databaseRef = FIRDatabase.database().reference().child("https://givniteapp.firebaseio.com/")
-    let storageRef = FIRStorage.storage().referenceForURL("gs://givniteapp.appspot.com")
-    let user = FIRAuth.auth()?.currentUser
-    var numberOfRows: Int!
     
     var userIDArray = [String]()
     var connectedArray = [Int]()
     
     var connections = [User]()
-    
-    
+    var connectionValue: Int?
+
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
-        
-        self.title = "Connection"
 
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
+     
+        let databaseRef = FIRDatabase.database().referenceFromURL("https://givniteapp.firebaseio.com/")
+        let user = FIRAuth.auth()!.currentUser
         
-        let connectionRef = databaseRef.child(user!.uid).child("connection")
+        
+        let connectionRef = databaseRef.child("user").child(user!.uid).child("connections")
         
         connectionRef.observeEventType(FIRDataEventType.Value, withBlock:{ (snapshot) -> Void in
             
+            
             if let connections = snapshot.value! as? NSDictionary {
-                self.numberOfRows = connections.count
+                
+                
                 
                 let allKeys = connections.allKeys as? [String]
                 let allValues = connections.allValues as? [Int]
@@ -53,9 +51,8 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
                 self.connectedArray = allValues!
                 
                 self.getsTheConnections()
-              
                 
-                self.tableView.reloadData()
+                
             }
             
             
@@ -63,16 +60,32 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
 
     }
     
+    
+
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+    }
+
+    
     func getsTheConnections() {
+        
+        let storageRef = FIRStorage.storage().referenceForURL("gs://givniteapp.appspot.com")
+        
+        let databaseRef = FIRDatabase.database().referenceFromURL("https://givniteapp.firebaseio.com/")
+        
+        
         databaseRef.child("user").observeEventType(FIRDataEventType.Value, withBlock:{ (snapshot) -> Void in
           
             for user in self.userIDArray {
                 
                 if let userInfo = snapshot.value![user] as? NSDictionary {
                     
-                    var someUser:User!
+                    var someUser = User()
                     
                     if let name = userInfo["name"] as? String {
+                        print(name)
                         someUser.name = name
                     }
                     
@@ -80,59 +93,147 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
                         someUser.school = school
                     }
                     
-                    if let image = userInfo["picture"] as? String {
+                    if let imageUrl = userInfo["picture"] as? String {
                         
-                        
-                        if let image = NSCache.sharedInstance.objectForKey(user) as? UIImage{
-                            someUser.picture = image
-                        }
-
-                        else {
-                        
-                            let profilePicRef = self.storageRef.child(user).child("profile_pic.jpg")
-                            profilePicRef.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
-                                if (error != nil) {
-                                    // Uh-oh, an error occurred!
-                                } else {
-                                    var cacheImage = UIImage(data: data!)
-                                    someUser.picture = cacheImage
-                                    NSCache.sharedInstance.setObject(cacheImage!, forKey: user)
-                                }
-                            }
-                        }
-
-                        
+                        someUser.picture = imageUrl
                     }
+                    
+                    
+                    self.connections.append(someUser)
                 }
-                
             }
 
+        self.tableView.reloadData()
             
         })
     }
   
+
+    // 0 is requested 
+    // 1 is connect
+    // 2 is givnited
     
-    
-    
-    
+  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfRows
+        return connections.count
     }
-    
-    
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("tableCell")! as! ChatTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("tableCell")! as! ConnectionTableViewCell
     
+        
+        if let aUser = self.connections[indexPath.row] as? User {
+      
+            cell.userName.text = aUser.name
+            
+            cell.userSchool.text = aUser.school
+
+            
+            
+            if let image = NSCache.sharedInstance.objectForKey(aUser.name!) as? UIImage{
+                cell.userImage.image = image
+            }
+                
+            else {
+            
+                let url = NSURL (string: aUser.picture!)
+                
+                NSURLSession.sharedSession().dataTaskWithURL(url!) { (data
+                    , response, error) in
+                        
+                    if error != nil {
+                        print(error)
+                        return
+                    }
+                    
+                    let imageToCache = UIImage(data: data!)
+                    NSCache.sharedInstance.setObject(imageToCache!, forKey: aUser.name!)
+
+                    
+                    dispatch_async(dispatch_get_main_queue(), { 
+                        cell.userImage.image = imageToCache
+
+                    })
+                    
+                }.resume()
+            }
+        }
+        
+        cell.connectButton.tag = indexPath.row
+        cell.connectButton.addTarget(self, action: "buttonClick:", forControlEvents: .TouchUpInside)
+        
+        if connectedArray.count > 1 {
+        
+            if let value = self.connectedArray[indexPath.row] as? Int {
+            
+                if (value == 0) {
+                    cell.connectButton.setTitle("Requested", forState: .Normal)
+                }
+            
+                if (value == 1) {
+                    cell.connectButton.setTitle("Connect", forState: .Normal)
+                }
+            
+                if (value == 2) {
+                    cell.connectButton.setTitle("Givnited", forState: .Normal)
+                }
+            
+                connectionValue = value
+            }
+        }
+        
+        
+        
         return cell
+
     }
+   
     
-    
-    
-    
+    @IBAction func buttonClick(sender: UIButton) {
+        let databaseRef = FIRDatabase.database().referenceFromURL("https://givniteapp.firebaseio.com/")
+        let user = FIRAuth.auth()!.currentUser
+        
+        
+        let otherUserID = userIDArray[sender.tag]
+        
+        
+        //connect
+        
+        if connectionValue == 1 {
+            
+            sender.setTitle("Givnited", forState: .Normal)
+            
+            databaseRef.child("user").child(user!.uid).child("connections").child(otherUserID).setValue(2)
+            databaseRef.child("user").child(otherUserID).child("connections").child(user!.uid).setValue(2)
+            
+            connectionValue == 2
+            
+        }
+        
+        
+        
+        //requested or givnited
+        if connectionValue == 0 || connectionValue == 2 {
+            
+            
+            databaseRef.child("user").child(user!.uid).child("connections").child(otherUserID).removeValue()
+            databaseRef.child("user").child(otherUserID).child("connections").child(user!.uid).removeValue()
+            
+            self.tableView.reloadData()
+            
+            
+        }
+
+        
+        
+    }
+
+
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

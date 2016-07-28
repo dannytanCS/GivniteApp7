@@ -11,11 +11,11 @@ import UIKit
 class User {
     
     var name:String?
-    var picture: UIImage?
+    var picture: String?
     var school:String?
     
     var graduationYear: Int?
-    var connection: NSDictionary?
+    var connection: Int?
     
     
     

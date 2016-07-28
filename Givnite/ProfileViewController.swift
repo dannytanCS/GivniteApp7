@@ -654,12 +654,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
     
     @IBAction func showConnections(sender: AnyObject) {
         
-        performSegueWithIdentifier("showConnections", sender: self)
+        let connectionViewController: UIViewController = self.storyboard!.instantiateViewControllerWithIdentifier("connection")
+        self.presentViewController(connectionViewController, animated: true, completion: nil)
     }
-    
-    
-    
-    
     
     
     

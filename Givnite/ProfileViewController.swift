@@ -80,7 +80,8 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
     var currentUserName: String?
     let firebaseUID = FIRAuth.auth()?.currentUser?.uid
 
-    @IBOutlet weak var secondView: UIView!
+ 
+    
     
     func timefunc()
     {
@@ -130,13 +131,12 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
        
         
        var timer = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: #selector(ItemViewController.timefunc), userInfo: nil, repeats: true)
-        self.view.sendSubviewToBack(secondView)
         self.view.bringSubviewToFront(name)
         self.view.bringSubviewToFront(addButton)
         self.view.bringSubviewToFront(changeBioButton)
         self.view.bringSubviewToFront(doneButton)
         self.bioTextView.delegate = self
-        secondView.hidden = true
+  
         self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2
         self.profilePicture.clipsToBounds = true
         self.profilePicture.layer.borderWidth = 2
@@ -156,8 +156,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
         
        
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        secondView.addGestureRecognizer(tap)
+    
         
         if marketVC == false{
             let swipeRightGestureRecognizer : UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "showMarketplace")
@@ -280,7 +279,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
             doneButton.hidden = true
             self.bioTextView.editable = false
             self.dataRef.child("user").child(userID!).child("bio").setValue(bioTextView.text)
-            self.secondView.hidden = true
+
             return false
         }
         return true
@@ -579,7 +578,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
         changeBioButton.hidden = true
         doneButton.hidden = false
         self.bioTextView.editable = true
-        self.secondView.hidden = false
+
         
         
         
@@ -599,7 +598,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate,UICollectionVi
         doneButton.hidden = true
         self.bioTextView.editable = false
         self.dataRef.child("user").child(user!.uid).child("bio").setValue(bioTextView.text)
-        self.secondView.hidden = true
+
     }
 
     

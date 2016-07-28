@@ -663,7 +663,7 @@
                                                 <real key="value" value="3"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                <real key="value" value="6"/>
+                                                <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                                 <real key="value" value="2"/>
@@ -755,8 +755,34 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZAK-qB-4E7">
-                                <rect key="frame" x="0.0" y="318" width="375" height="341"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gZc-28-sN8">
+                                <rect key="frame" x="0.0" y="303" width="375" height="14"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Givnitee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qs-LZ-d0U">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAa-bS-BK0">
+                                        <rect key="frame" x="125" y="0.0" width="125" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5a-Eq-FUj">
+                                        <rect key="frame" x="250" y="0.0" width="125" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="smI-kf-Wkw"/>
+                                </constraints>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZAK-qB-4E7">
+                                <rect key="frame" x="0.0" y="318" width="375" height="349"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="1" id="ItG-kM-2YT">
                                     <size key="itemSize" width="100" height="100"/>
@@ -794,32 +820,6 @@
                                     <outlet property="delegate" destination="WKj-cM-742" id="HbV-7N-Tii"/>
                                 </connections>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gZc-28-sN8">
-                                <rect key="frame" x="0.0" y="303" width="375" height="14"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Givnitee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qs-LZ-d0U">
-                                        <rect key="frame" x="0.0" y="0.0" width="125" height="14"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAa-bS-BK0">
-                                        <rect key="frame" x="125" y="0.0" width="125" height="14"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5a-Eq-FUj">
-                                        <rect key="frame" x="250" y="0.0" width="125" height="14"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="smI-kf-Wkw"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -837,11 +837,13 @@
                             <constraint firstItem="8mu-uk-JDA" firstAttribute="top" secondItem="wo5-Jj-kvv" secondAttribute="bottom" constant="5" id="JWm-di-2re"/>
                             <constraint firstItem="gZc-28-sN8" firstAttribute="leading" secondItem="eeh-LI-Si2" secondAttribute="leading" id="KFM-FC-ubo"/>
                             <constraint firstItem="zoN-cL-aij" firstAttribute="centerX" secondItem="eeh-LI-Si2" secondAttribute="centerX" id="OPr-iv-fNh"/>
+                            <constraint firstItem="ZAK-qB-4E7" firstAttribute="leading" secondItem="eeh-LI-Si2" secondAttribute="leadingMargin" constant="-20" id="RZ9-62-ySS"/>
                             <constraint firstItem="0Uo-qj-7h4" firstAttribute="top" secondItem="wo5-Jj-kvv" secondAttribute="bottom" constant="3" id="SCD-41-nWz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eJ3-K9-LLP" secondAttribute="trailing" constant="-8" id="SfU-9Q-Sis"/>
-                            <constraint firstItem="ZAK-qB-4E7" firstAttribute="leading" secondItem="eeh-LI-Si2" secondAttribute="leadingMargin" constant="-20" id="TAZ-SC-eHI"/>
                             <constraint firstItem="8mu-uk-JDA" firstAttribute="leading" secondItem="eeh-LI-Si2" secondAttribute="leadingMargin" id="UY8-55-Cg4"/>
+                            <constraint firstItem="ZAK-qB-4E7" firstAttribute="top" secondItem="gZc-28-sN8" secondAttribute="bottom" constant="1" id="Y2R-Xh-0nU"/>
                             <constraint firstItem="gZc-28-sN8" firstAttribute="top" secondItem="2fk-89-1nR" secondAttribute="bottom" constant="-7" id="YsD-Q4-HhQ"/>
+                            <constraint firstItem="a2o-X1-jCK" firstAttribute="top" secondItem="ZAK-qB-4E7" secondAttribute="bottom" id="dya-sd-6I5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Uo-qj-7h4" secondAttribute="trailing" constant="-12" id="ekB-VY-rNu"/>
                             <constraint firstItem="zoN-cL-aij" firstAttribute="top" secondItem="8mu-uk-JDA" secondAttribute="bottom" constant="-2" id="inO-RS-j1i"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZAK-qB-4E7" secondAttribute="trailing" constant="-20" id="khJ-LR-lEX"/>
@@ -2082,10 +2084,10 @@
         <image name="photo-camera (1)" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hwb-wp-hml"/>
         <segue reference="4Fk-YX-ieg"/>
         <segue reference="Nm1-oM-csR"/>
-        <segue reference="qG4-99-uBB"/>
+        <segue reference="4FE-Dr-Dr8"/>
+        <segue reference="yDE-RF-xni"/>
         <segue reference="Mgg-ae-R6I"/>
     </inferredMetricsTieBreakers>
 </document>

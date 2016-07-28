@@ -939,7 +939,7 @@
                                 <rect key="frame" x="26" y="10" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="WKj-cM-742" kind="modal" id="mEw-wi-rl8"/>
+                                    <action selector="goBack:" destination="Uh7-ly-fif" eventType="touchUpInside" id="rEB-No-gYv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2072,7 +2072,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Mgg-ae-R6I"/>
         <segue reference="yDE-RF-xni"/>
-        <segue reference="mEw-wi-rl8"/>
+        <segue reference="zUB-R1-gCs"/>
         <segue reference="4FE-Dr-Dr8"/>
         <segue reference="Nm1-oM-csR"/>
     </inferredMetricsTieBreakers>

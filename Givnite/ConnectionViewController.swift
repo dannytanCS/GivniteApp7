@@ -30,6 +30,10 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
     override func viewDidLoad() {
         
         
+        
+        print(123123)
+        
+        
         super.viewDidLoad()
         
 
@@ -51,6 +55,10 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
                 self.userIDArray = allKeys!
                 self.connectedArray = allValues!
 
+                
+                print(self.userIDArray)
+                
+                print(self.connectedArray)
     
              
             }
@@ -99,9 +107,11 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
                     
 
                     self.connections.append(someUser)
-                    self.rowCount = self.connections.count
+                    print(self.connections)
                 }
             }
+            
+        self.rowCount = self.userIDArray.count
 
         self.tableView.reloadData()
             
@@ -124,6 +134,9 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("tableCell")! as! ConnectionTableViewCell
     
+        
+        print(connections)
+        print(rowCount)
 
         if let aUser = self.connections[indexPath.row] as? User {
       
@@ -162,11 +175,16 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
             }
         }
         
-        cell.connectButton.tag = indexPath.row
         cell.connectButton.addTarget(self, action: "buttonClick:", forControlEvents: .TouchUpInside)
         
         
+        
        
+        print(connectedArray)
+        print(userIDArray)
+        print(rowCount)
+        print(indexPath.row)
+        
         if let value = self.connectedArray[indexPath.row] as? Int {
         
             if (value == 0) {
@@ -190,11 +208,17 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
    
     
     @IBAction func buttonClick(sender: UIButton) {
+       
+        var touchPoint: CGPoint = sender.convertPoint(CGPointZero, toView: tableView)
+        // maintable --> replace your tableview name
+        var clickedButtonIndexPath: NSIndexPath = tableView.indexPathForRowAtPoint(touchPoint)!
+        
+        
         let databaseRef = FIRDatabase.database().referenceFromURL("https://givniteapp.firebaseio.com/")
         let user = FIRAuth.auth()!.currentUser
         
         
-        let otherUserID = userIDArray[sender.tag]
+        let otherUserID = userIDArray[clickedButtonIndexPath.row]
         
         
         //connect
@@ -217,22 +241,25 @@ class ConnectionViewController: UIViewController,UITableViewDelegate {
             
             
             databaseRef.child("user").child(user!.uid).child("connections").child(otherUserID).removeValue()
-            databaseRef.child("user").child(otherUserID).child("connections").child(user!.uid).removeValue()
-            
-            
-            userIDArray.removeAtIndex(sender.tag)
-            connectedArray.removeAtIndex(sender.tag)
-            rowCount -= 1
-            self.tableView.reloadData()
-            
-            
+        
+        databaseRef.child("user").child(otherUserID).child("connections").child(user!.uid).removeValue()
         }
+        
+    
+        connections.removeAtIndex(clickedButtonIndexPath.row)
+        rowCount -= 1
+        tableView.reloadData()
 
         
         
     }
 
 
+
+    @IBAction func goBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
 
 
 
